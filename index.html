@@ -1,0 +1,267 @@
+<body ontouchstart="touchStart(event)"
+    ontouchmove="touchMove(event)"
+    ontouchend="touchEnd()">
+    <style>
+        body{
+            align-items: center;
+        }
+        table{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top:120px;
+        }
+        th{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+        }
+        div{
+            width: 150px;
+            height: 70px;
+            border: 1px solid black;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            border-radius: 25px;
+        }
+    </style>
+    <table>
+        <!-- <div class="up">UP</div>
+        <div class="right">RIGHT</div>
+        <div class="down">DOWN</div>
+        <div class="left">LEFT</div> -->
+        <tr>
+            <th class="t1"></th>
+            <th class="t2">2</th>
+            <th class="t3"></th>
+            <th class="t4"></th>
+        </tr>
+        <tr>
+            <th class="t5"></th>
+            <th class="t6"></th>
+            <th class="t7"></th>
+            <th class="t8"></th>
+        </tr>
+        <tr>
+            <th class="t9"></th>
+            <th class="t10"></th>
+            <th class="t11"></th>
+            <th class="t12"></th>
+        </tr>
+        <tr>
+            <th class="t13"></th>
+            <th class="t14"></th>
+            <th class="t15"></th>
+            <th class="t16"></th>
+        </tr>
+    </table>
+    <script>
+        let r1 = document.querySelector(".t1");
+        let r2 = document.querySelector(".t2");
+        let r3 = document.querySelector(".t3");
+        let r4 = document.querySelector(".t4");
+        let r5 = document.querySelector(".t5");
+        let r6 = document.querySelector(".t6");
+        let r7 = document.querySelector(".t7");
+        let r8 = document.querySelector(".t8");
+        let r9 = document.querySelector(".t9");
+        let r10 = document.querySelector(".t10");
+        let r11 = document.querySelector(".t11");
+        let r12 = document.querySelector(".t12");
+        let r13 = document.querySelector(".t13");
+        let r14 = document.querySelector(".t14");
+        let r15 = document.querySelector(".t15");
+        let r16 = document.querySelector(".t16");
+        function moveRight(s1 , s2 , s3 , s4){
+            //first case : th1 have number and other not ;
+            if(s1.innerHTML !="" && s2.innerHTML == "" && s3.innerHTML == ""  && s4.innerHTML == ""){
+                s4.innerHTML = s1.innerHTML ;
+                s1.innerHTML = "";
+                return stat = "changed";
+            }else if(s1.innerHTML !="" && s2.innerHTML == "" && s3.innerHTML == "" ){
+                s3.innerHTML = s1.innerHTML ;
+                s1.innerHTML = "";
+                return stat = "changed";
+            }else if(s1.innerHTML !="" && s2.innerHTML == ""){
+                s2.innerHTML = s1.innerHTML ;
+                s1.innerHTML = "";
+                return stat = "changed";
+            }
+            //number two : calc
+            if(s1.innerHTML == s2.innerHTML && s3.innerHTML == s4.innerHTML && s1.innerHTML != "" && s3.innerHTML != ""){
+                let cal1 = parseInt(s1.innerHTML) + parseInt(s2.innerHTML) ; 
+                let cal2 = parseInt(s3.innerHTML) + parseInt(s4.innerHTML) ;
+                s4.innerHTML = cal2 ;
+                s3.innerHTML = cal1 ;
+                s2.innerHTML = "";
+                s1.innerHTML = ""; 
+                return stat = "changed";
+            }else if(s3.innerHTML == s4.innerHTML && s3.innerHTML !=""){
+                let cal = parseInt(s3.innerHTML) + parseInt(s4.innerHTML) ; 
+                s4.innerHTML = cal ;
+                s3.innerHTML = s2.innerHTML ;
+                s2.innerHTML = s1.innerHTML ;
+                s1.innerHTML = "" ;
+                return stat = "changed";
+            }else if(s2.innerHTML == s3.innerHTML && s2.innerHTML !=""){
+                let cal = parseInt(s2.innerHTML) + parseInt(s3.innerHTML) ; 
+                if(s4.innerHTML == ""){
+                    s4.innerHTML = cal ;
+                    s3.innerHTML = s1.innerHTML ;
+                    s2.innerHTML = "";
+                    s1.innerHTML = "";
+                    return stat = "changed";
+                }else{
+                    s3.innerHTML = cal ;
+                    s2.innerHTML = s1.innerHTML ;
+                    s1.innerHTML = "" ;
+                    return stat = "changed";
+                }
+            }else if(s1.innerHTML == s2.innerHTML && s1.innerHTML !=""){
+                let cal = parseInt(s1.innerHTML) + parseInt(s2.innerHTML) ; 
+                if(s4.innerHTML == "" && s3.innerHTML == ""){
+                    s4.innerHTML = cal ;
+                    s1.innerHTML = "" ; 
+                    s2.innerHTML = "" ; 
+                    s3.innerHTML = "" ; 
+                    return stat = "changed";
+                }else if(s3.innerHTML == "" ){
+                    s3.innerHTML = cal ;
+                    s1.innerHTML = "" ; 
+                    s2.innerHTML = "" ; 
+                    return stat = "changed";
+                }else if(s3.innerHTML != "" && s4.innerHTML == ""){
+                    s4.innerHTML = s3.innerHTML ;
+                    s3.innerHTML = cal; 
+                    s2.innerHTML = "";
+                    s1.innerHTML = "";
+                    return stat = "changed";
+                }else{
+                    s2.innerHTML = cal ;
+                    s1.innerHTML = "" ;
+                    return stat = "changed";
+                }
+            }else if(s1.innerHTML == s4.innerHTML && s1.innerHTML !="" && s2.innerHTML == "" && s3 == ""){
+                let cal = parseInt(s1.innerHTML) + parseInt(s4.innerHTML) ; 
+                s4.innerHTML = cal ;
+                s3.innerHTML = "" ;
+                s2.innerHTML = "" ;
+                s1.innerHTML = "" ;
+                return stat = "changed";
+            }else if(s2.innerHTML == s4.innerHTML && s2.innerHTML !="" && s3.innerHTML == ""){
+                let cal = parseInt(s2.innerHTML) + parseInt(s4.innerHTML) ; 
+                s4.innerHTML = cal ;
+                s3.innerHTML = s1.innerHTML ;
+                s2.innerHTML = "" ;
+                s1.innerHTML = "" ;
+                return stat = "changed";
+            }else if(s1.innerHTML == s3.innerHTML && s1.innerHTML !="" && s2.innerHTML == ""){
+                let cal = parseInt(s1.innerHTML) + parseInt(s3.innerHTML) ; 
+                s3.innerHTML = cal ;
+                s2.innerHTML = "" ;
+                s1.innerHTML = "" ;
+                return stat = "changed";
+            }
+            // number three : move in blank th
+            if(s2.innerHTML != "" && s3.innerHTML == "" && s4.innerHTML == "" ){
+                s4.innerHTML = s2.innerHTML ;
+                s3.innerHTML = s1.innerHTML ;
+                s1.innerHTML = "";
+                s2.innerHTML = "";
+                return stat = "changed";
+            }else if(s2.innerHTML != "" && s3.innerHTML ==""){
+                s3.innerHTML = s2.innerHTML ;
+                s2.innerHTML = s1.innerHTML ;
+                s1.innerHTML = "";
+                return stat = "changed";
+            }
+
+            if(s3.innerHTML != "" && s4.innerHTML ==""){
+                s4.innerHTML = s3.innerHTML ;
+                s3.innerHTML = s2.innerHTML ;
+                s2.innerHTML = s1.innerHTML ;
+                s1.innerHTML = "";
+                return stat = "changed";
+            }
+        }
+        var startingX , startingY , movingX , movingY ;
+        function touchStart(evt){
+        startingX = evt.touches[0].clientX ;
+        startingY = evt.touches[0].clientY ;
+        }
+        function touchMove(evt){
+        movingX = evt.touches[0].clientX ;
+        movingY = evt.touches[0].clientY ;
+        }
+        function adnum(){
+            let t1 = document.querySelectorAll("th");
+            let arr = [];
+            for(i=0 ; i < t1.length ; i++){
+                arr.push(t1[i]);
+            }
+            
+            let rand = Math.floor(Math.random() * 16);
+            let rand1 = Math.floor(Math.random() * 2);
+            console.log(rand);
+            console.log(rand1);
+            let ad = [2,4];
+            if(arr[rand].innerHTML == ""){
+                arr[rand].innerHTML = ad[rand1];
+            }else{
+                for(e=0 ; e < arr.length ; e++){
+                    if(arr[e].innerHTML == ""){
+                        arr[e].innerHTML = ad[rand1];
+                        break ;
+                    }
+                }
+            }
+        }
+        function touchEnd(){
+            if(startingX+100 < movingX){
+                console.log('right');
+                moveRight(r1 , r2 , r3 ,r4);
+                moveRight(r5 , r6 , r7 ,r8);
+                moveRight(r9 , r10 , r11 ,r12);
+                moveRight(r13 , r14 , r15 ,r16);
+                if(stat == "changed"){
+                    adnum();
+                    stat == "not";
+                }
+            } else if(startingX-100 > movingX){
+                console.log('left');
+                moveRight(r4 , r3 , r2 ,r1);
+                moveRight(r8 , r7 , r6 ,r5);
+                moveRight(r12, r11 , r10 ,r9);
+                moveRight(r16 , r15 , r14 ,r13);
+                if(stat == "changed"){
+                    adnum();
+                    stat == "not";
+                }
+            }
+            if(startingY+100 < movingY){
+                console.log('down');
+                moveRight(r1 , r5 , r9 ,r13);
+                moveRight(r2 , r6 , r10 ,r14);
+                moveRight(r3 , r7 , r11 ,r15);
+                moveRight(r4 , r8 , r12 ,r16);
+                if(stat == "changed"){
+                    adnum();
+                    stat == "not";
+                }
+            } else if(startingY-100 > movingY){
+                console.log('up');
+                moveRight(r13 , r9 , r5 ,r1);
+                moveRight(r14 , r10 , r6 ,r2);
+                moveRight(r15 , r11 , r7 ,r3);
+                moveRight(r16 , r12 , r8 ,r4);
+                if(stat == "changed"){
+                    adnum();
+                    stat == "not";
+                }
+                }
+        }
+    </script>
+</body>
