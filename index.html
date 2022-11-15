@@ -187,6 +187,8 @@
                 return stat = "changed";
             }
         }
+        let bod = document.querySelector("table");
+        bod.addEventListener("touchstart",e => { e.preventDefault() });
         var startingX , startingY , movingX , movingY ;
         function touchStart(evt){
         startingX = evt.touches[0].clientX ;
