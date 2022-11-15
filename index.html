@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2024</title>
     <style>
+        @media (max-width: 767px){
+            body{  
+                display: grid;
+                grid-template-columns: repeat(auto-fill , minmax(380px,1fr));
+            }
+            th{
+                min-width: 80px;
+                height: 106px;
+                font-size: 70px;
+                padding: 0px;
+            }
+        }
         body{
             align-items: center;
             margin: 0px;
@@ -51,13 +63,10 @@
             transition: .3s;
         }
         @media (max-width: 767px){
-            body{  
-                display: grid;
-                grid-template-columns: repeat(auto-fill , minmax(380px,1fr));
-            }
             th{
                 min-width: 80px;
                 height: 106px;
+                font-size: 40px;
                 padding: 0px;
             }
         }
@@ -296,7 +305,6 @@
                 for(e=0 ; e < arr.length ; e++){
                     if(arr[e].innerHTML == ""){
                         arr[e].innerHTML = ad[rand1];
-                        arr[e].style.fontSize = "20px";
                         break ;
                     }
                 }
@@ -317,7 +325,9 @@
                     t1[y].style.backgroundColor = "#485281";
                 }else if(t1[y].innerHTML == 2048){
                     t1[y].style.backgroundColor = "#423635";
+                    t1[y].style.color = "#EFC3D0";
                 }else if(t1[y].innerHTML == 4096 || t1[y].innerHTML == 8192){
+                    t1[y].style.color = "#EFC3D0";
                     t1[y].style.backgroundColor = "#423635";
                 }
             }
